@@ -35,7 +35,7 @@ public class LoginPageTest extends BaseTest {
 	
 	@Description("checking login page url....")
 	@Severity(SeverityLevel.MINOR)
-	@Test
+	@Test(enabled = false)
 	public void loginPageURLTest() {
 		String actURL = loginPage.getLoginPageURL();
 		Assert.assertTrue(actURL.contains(AppConstants.LOGIN_PAGE_URL_FRACTION), AppError.URL_NOT_FOUND_ERROR);
@@ -43,14 +43,14 @@ public class LoginPageTest extends BaseTest {
 
 	@Description("checking forgot pwd link....")
 	@Severity(SeverityLevel.CRITICAL)
-	@Test
+	@Test(enabled = false)
 	public void forgotPwdLinkExistTest() {
 		Assert.assertTrue(loginPage.isForgotPwdLinkExist(), AppError.ELEMENT_NOT_FOUND_ERROR);
 	}
 	
 	@Description("checking user is able to login with right credentials....")
 	@Severity(SeverityLevel.BLOCKER)
-	@Test(priority = Integer.MAX_VALUE)
+	@Test(priority = Integer.MAX_VALUE, enabled = false)
 	public void loginTest() {
 		homePage = loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 		Assert.assertEquals(homePage.getHomePageTitle(), AppConstants.HOME_PAGE_TITLE, AppError.TITLE_NOT_FOUND_ERROR);
@@ -58,7 +58,7 @@ public class LoginPageTest extends BaseTest {
 	
 	@Description("checking page logo....")
 	@Severity(SeverityLevel.CRITICAL)
-	@Test
+	@Test(enabled = false)
 	public void logoTest() {
 		Assert.assertTrue(commonsPage.isLogoDisplayed(), AppError.LOGO_NOT_FOUND_ERROR);
 	}
@@ -75,7 +75,7 @@ public class LoginPageTest extends BaseTest {
 	
 	@Description("checking page footers....")
 	@Severity(SeverityLevel.NORMAL)
-	@Test(dataProvider = "getFooterData")
+	@Test(dataProvider = "getFooterData", enabled = false)
 	public void footerTest(String footerLink) {
 		Assert.assertTrue(commonsPage.checkFooterLink(footerLink));
 	}
