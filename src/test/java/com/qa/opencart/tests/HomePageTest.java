@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.constants.AppError;
-import com.qa.opencart.pages.SearchResultsPage;
+//import com.qa.opencart.pages.SearchResultsPage;
 
 public class HomePageTest extends BaseTest {
 	
