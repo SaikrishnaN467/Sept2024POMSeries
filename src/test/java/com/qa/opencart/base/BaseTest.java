@@ -7,6 +7,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.aventstack.chaintest.service.ChainPluginService;
@@ -33,11 +34,18 @@ public class BaseTest {
 	protected SearchResultsPage searchResultsPage;
 	protected ProductInfoPage productInfoPage;
 	
-	
+	@Parameters({"browser", "browserversion", "testname"})
 	@BeforeTest(description = "setup: init the driver and properties")
-	public void setup() {
+	public void setup(String browserName, String browserVersion, String testName) {
 		df = new DriverFactory();
 		prop = df.initProp();
+		
+		if(browserName != null) {
+			prop.setProperty("browser", browserName);
+			prop.setProperty("browserversion", browserVersion);
+			prop.setProperty("testname", testName);
+		}
+		
 		driver = df.initDriver(prop);
 		loginPage = new LoginPage(driver);
 		commonsPage = new CommonsPage(driver);
